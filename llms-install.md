@@ -11,8 +11,10 @@ Jean is a **remote** MCP server. There is nothing to download, build or run, and
    ```
 
 3. Verify: call `find_restriction_sites` with
-   `{"$subject": {"sequence": "GGATCCAAAA"}, "enzymes": ["BamHI"]}`. It returns BamHI cutting
+   `{"_subject": {"sequence": "GGATCCAAAA"}, "enzymes": ["BamHI"]}`. It returns BamHI cutting
    the sequence; any error means the server was not added.
 
-Tools take the molecule to act on as `$subject` (a sequence, an accession, or a file). The server is
-stateless, so pass it with every call. Field-by-field help: https://jean.meladlabs.workers.dev/docs/api/mcp
+Tools take the molecule to act on as `_subject`: exactly one of `sequence`, `accession` (+ `source`),
+`sample` (an id from `list_samples`) or `file` (`{name, text}` or `{name, base64}`). The server is
+stateless, so pass it with every call. The calling contract, results and errors:
+[docs/protocol.md](docs/protocol.md). Every tool's arguments and outputs: [docs/tools/](docs/tools/README.md).
