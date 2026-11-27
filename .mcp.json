@@ -1,7 +1,7 @@
 {
   "mcpServers": {
     "jean": {
-      "url": "https://jeanslabs.vercel.app/mcp"
+      "url": "https://jeanpm.vercel.app/mcp"
     }
   }
 }

@@ -1,7 +1,7 @@
 """Regenerate README.md's tool catalogue from the live server's own `tools/list`.
 
 Everything written between the TOOLS markers, and the tool count between the COUNT markers, is
-read from https://jeanslabs.vercel.app/mcp at run time, so the README can never list a tool the
+read from https://jeanpm.vercel.app/mcp at run time, so the README can never list a tool the
 server does not have. Run by .github/workflows/registry.yml daily; run by hand with
 `python scripts/tools_readme.py`.
 """
@@ -13,7 +13,7 @@ import urllib.request
 from collections import defaultdict
 from pathlib import Path
 
-ENDPOINT = "https://jeanslabs.vercel.app/mcp"
+ENDPOINT = "https://jeanpm.vercel.app/mcp"
 README = Path(__file__).resolve().parent.parent / "README.md"
 
 # Shown in this order. A tool lands in the first section whose rule matches; anything unmatched

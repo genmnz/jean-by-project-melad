@@ -12,7 +12,7 @@ on:
 
 env:
   NAME: io.github.genmnz/jean
-  ENDPOINT: https://jeanslabs.vercel.app/mcp
+  ENDPOINT: https://jeanpm.vercel.app/mcp
 
 jobs:
   sync:

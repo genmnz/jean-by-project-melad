@@ -6,7 +6,7 @@
 
 ### The bioinformatics & biotech suite, callable by any AI assistant
 
-**<!-- COUNT:START -->325<!-- COUNT:END --> scientific tools · one URL · no key · free**
+**<!-- COUNT:START -->346<!-- COUNT:END --> scientific tools · one URL · no key · free**
 
 **Design** the construct · **Simulate** the bench step · **Analyze** what comes back · **Verify** the result
 
@@ -14,7 +14,7 @@
 ![Transport](https://img.shields.io/badge/transport-Streamable%20HTTP-2b8a3e)
 ![Auth](https://img.shields.io/badge/auth-none-495057)
 ![Price](https://img.shields.io/badge/price-free-e8590c)
-[![Docs](https://img.shields.io/badge/docs-jeanslabs.vercel.app-1971c2)](https://jeanslabs.vercel.app/docs/api/mcp)
+[![Docs](https://img.shields.io/badge/docs-jean.meladlabs.workers.dev-1971c2)](https://jean.meladlabs.workers.dev/docs/api/mcp)
 
 [Connect](#-connect-in-thirty-seconds) · [How it works](#-how-it-works) · [What to ask](#-what-you-can-ask) · [Every tool](#-every-tool) · [FAQ](#-faq)
 
@@ -70,33 +70,33 @@ tracking.
 
 | Setting | Value |
 |---|---|
-| **Server URL** | `https://jeanslabs.vercel.app/mcp` |
+| **Server URL** | `https://jeanpm.vercel.app/mcp` |
 | **Transport** | Streamable HTTP |
 | **Authentication** | None |
 | **Cost** | Free |
 
-**Claude** (claude.ai, Desktop): [**➕ Add Jean as a connector**](https://claude.ai/customize/connectors?modal=add-custom-connector&connectorName=Jean&connectorUrl=https%3A%2F%2Fjeanslabs.vercel.app%2Fmcp). The dialog opens prefilled.
+**Claude** (claude.ai, Desktop): [**➕ Add Jean as a connector**](https://claude.ai/customize/connectors?modal=add-custom-connector&connectorName=Jean&connectorUrl=https%3A%2F%2Fjeanpm.vercel.app%2Fmcp). The dialog opens prefilled.
 
 **Claude Code**:
 
 ```bash
-claude mcp add --transport http jean https://jeanslabs.vercel.app/mcp
+claude mcp add --transport http jean https://jeanpm.vercel.app/mcp
 ```
 
 **Cursor**, in `~/.cursor/mcp.json`:
 
 ```json
-{ "mcpServers": { "jean": { "url": "https://jeanslabs.vercel.app/mcp" } } }
+{ "mcpServers": { "jean": { "url": "https://jeanpm.vercel.app/mcp" } } }
 ```
 
 **VS Code**, in `.vscode/mcp.json`:
 
 ```json
-{ "servers": { "jean": { "type": "http", "url": "https://jeanslabs.vercel.app/mcp" } } }
+{ "servers": { "jean": { "type": "http", "url": "https://jeanpm.vercel.app/mcp" } } }
 ```
 
 **Any other MCP client:** add a remote server with the URL above. Field-by-field help for every
-connector dialog is at [jeanslabs.vercel.app/docs/api/mcp](https://jeanslabs.vercel.app/docs/api/mcp).
+connector dialog is at [jean.meladlabs.workers.dev/docs/api/mcp](https://jean.meladlabs.workers.dev/docs/api/mcp).
 
 ## 🔁 How it works
 
@@ -228,7 +228,7 @@ _Primer design for every kind of PCR, melting temperatures and reaction simulati
 </details>
 
 <details>
-<summary><b>✂️ CRISPR & genome editing</b> · 19 tools</summary>
+<summary><b>✂️ CRISPR & genome editing</b> · 20 tools</summary>
 
 _Guide design and scoring, off-targets, screens, and editing outcomes measured from traces._
 
@@ -240,6 +240,7 @@ _Guide design and scoring, off-targets, screens, and editing outcomes measured f
 | **CRISPR quantify edits** <br><sub>`crispr_quantify_edits`</sub> | How much of the edited population carries which indels, from a control and an edited trace (ICE)? |
 | **CRISPR score DeepHF** <br><sub>`crispr_score_deephf`</sub> | What knockout efficiency does DeepHF predict for each guide under this nuclease and promoter? |
 | **CRISPR score DeepSpCas9** <br><sub>`crispr_score_deepspcas9`</sub> | What indel frequency does DeepSpCas9 predict for each 30-nt context? |
+| **Design indel primers** <br><sub>`design_indel_primers`</sub> | Which back-to-back primers delete, insert or replace these residues, and what product do they make? |
 | **Detect trace indel** <br><sub>`detect_trace_indel`</sub> | Does this trace split into two reads of different length, as a heterozygous indel does? |
 | **Fold guide** <br><sub>`fold_guide`</sub> | Does a spacer base-pair into its sgRNA scaffold, and what does the whole guide RNA fold into? |
 | **List sgRNA scaffolds** <br><sub>`list_sgrna_scaffolds`</sub> | Which sgRNA scaffolds has this workbench sourced, for which nucleases, from which publication? |
@@ -285,7 +286,7 @@ _Trace reading, base calling, construct verification, read QC and alignment to a
 </details>
 
 <details>
-<summary><b>🧪 qPCR & digital PCR</b> · 12 tools</summary>
+<summary><b>🧪 qPCR & digital PCR</b> · 13 tools</summary>
 
 _Amplification and melt curves, RDML runs, droplet gating, uncertainty and relative quantification._
 
@@ -294,6 +295,7 @@ _Amplification and melt curves, RDML runs, droplet gating, uncertainty and relat
 | **Analyze melt curves** <br><sub>`analyze_melt_curves`</sub> | What is each reaction's melting temperature, and does its melt show the product, an artifact, or no amplification? |
 | **Bootstrap Cq** <br><sub>`bootstrap_cq`</sub> | How tightly do one reaction's observations pin down its Cq, efficiency and fitted coefficients? |
 | **Call Cq** <br><sub>`call_cq`</sub> | What is each reaction's Cq and amplification efficiency, read off a fitted sigmoid under a named Cq definition? |
+| **Check qPCR multiplex** <br><sub>`check_qpcr_multiplex`</sub> | Which of these qPCR assays can be pooled in one reaction, and which pair clashes? |
 | **Classify droplets** <br><sub>`classify_droplets`</sub> | Which population (NN, NP, PN, PP) does each two-channel ddPCR droplet belong to, under a fixed grid, k-means or a k-nearest-neighbour vote? |
 | **Design qPCR assay** <br><sub>`design_qpcr_assay`</sub> | Which primer pair and hydrolysis probe make a qPCR assay on this target, ranked by penalty? |
 | **Gate droplets** <br><sub>`gate_droplets`</sub> | What is the template concentration in each ddPCR well, from the raw droplet amplitudes rather than the instrument's count? |
@@ -307,7 +309,7 @@ _Amplification and melt curves, RDML runs, droplet gating, uncertainty and relat
 </details>
 
 <details>
-<summary><b>🎛️ Design & expression</b> · 40 tools</summary>
+<summary><b>🎛️ Design & expression</b> · 42 tools</summary>
 
 _Codon optimisation, RBS and operons, probes, barcodes, genetic circuits and annotation._
 
@@ -318,6 +320,7 @@ _Codon optimisation, RBS and operons, probes, barcodes, genetic circuits and ann
 | **Audit CDS annotations** <br><sub>`audit_cds_annotations`</sub> | Does every annotated CDS of a map translate cleanly from its own bases and genetic code? |
 | **Auto annotate** <br><sub>`auto_annotate`</sub> | Which known parts (vector elements, origins, markers, tags, lox and att sites) does this sequence carry, and where? |
 | **Back translate** <br><sub>`back_translate`</sub> | What coding sequence encodes this protein under this host's codon usage and this rule? |
+| **Build codon table from CDS** <br><sub>`build_codon_table_from_cds`</sub> | What codon usage does this genome show, across its highly-expressed genes or all of them? |
 | **Build ENA submission** <br><sub>`build_ena_submission`</sub> | What flat file and manifest does ENA's Webin-CLI take for this record, and what would its validator refuse? |
 | **Build GenBank submission** <br><sub>`build_genbank_submission`</sub> | What submission set (fasta with source modifiers and a feature table) does NCBI's table2asn take for this record, and what had to be refused or migrated? |
 | **Calculate power** <br><sub>`calculate_power`</sub> | How many replicates does a planned test need to detect an effect, or what power, detectable effect or significance level does a fixed design give? |
@@ -332,6 +335,7 @@ _Codon optimisation, RBS and operons, probes, barcodes, genetic circuits and ann
 | **Codon usage distance** <br><sub>`codon_usage_distance`</sub> | How far is this region's codon usage from the record's other genes (CUFS)? |
 | **Debarcode mass cytometry** <br><sub>`debarcode_mass_cytometry`</sub> | Which barcoded sample does each event of a pooled mass cytometry acquisition belong to? |
 | **Design barcodes** <br><sub>`design_barcodes`</sub> | Which index set of this size has a guaranteed minimum distance, and what does it actually correct? |
+| **Design codon tiling primers** <br><sub>`design_codon_tiling_primers`</sub> | Which primers tile this CDS, one degenerate codon per position, inside a Tm window? |
 | **Design FREE codes** <br><sub>`design_free_codes`</sub> | Which barcodes of this length correct this many insertions, deletions and substitutions? |
 | **Design gene fragment order** <br><sub>`design_gene_fragment_order`</sub> | What sheet does IDT's gene-fragment plate upload take for these fragments, and which of them can the product not be ordered as? |
 | **Design genetic circuit** <br><sub>`design_genetic_circuit`</sub> | Which characterised repressor gates compute this logic function — given as a named gate, a truth table or a Verilog module — with what ON/OFF dynamic range, and what DNA does the circuit need? |
@@ -537,7 +541,7 @@ _Search and fetch from NCBI, EMBL-EBI, UCSC, UniProt and more, then hand the rec
 </details>
 
 <details>
-<summary><b>📊 Sequence analysis</b> · 50 tools</summary>
+<summary><b>📊 Sequence analysis</b> · 67 tools</summary>
 
 _Everything else a bench scientist asks of a sequence._
 
@@ -545,6 +549,7 @@ _Everything else a bench scientist asks of a sequence._
 |---|---|
 | **Analyze flow cytometry** <br><sub>`analyze_flow_cytometry`</sub> | How many events fall in each gated population of this FCS file, and what are their per-channel intensities? |
 | **Analyze flow cytometry ploidy** <br><sub>`analyze_flow_cytometry_ploidy`</sub> | What are the cell-cycle phases and DNA content in this DNA-stained sample? |
+| **Analyze rt PCR** <br><sub>`analyze_rt_pcr`</sub> | Does this primer pair span an exon junction, and would genomic DNA amplify too? |
 | **Auto Gate flow cytometry** <br><sub>`auto_gate_flow_cytometry`</sub> | Where would openCyto place its automated gates on these two channels, and how many events fall on each side? |
 | **Batch flow cytometry** <br><sub>`batch_flow_cytometry`</sub> | How does each population change across samples, and between groups of samples? |
 | **BLAST project sequences** <br><sub>`blast_project_sequences`</sub> | Which of this project's own records carry this span, with what E-values? |
@@ -554,22 +559,33 @@ _Everything else a bench scientist asks of a sequence._
 | **Check flow cytometry quality** <br><sub>`check_flow_cytometry_quality`</sub> | Which stretches of this acquisition were unstable, and which events should be removed? |
 | **Check primer specificity** <br><sub>`check_primer_specificity`</sub> | Do these primer pairs make products off their template, and which pair ranks best by it? |
 | **Check rows** <br><sub>`check_rows`</sub> | Does every row of this table satisfy the rule, and which rows broke it? |
+| **Classify flow cytometry events** <br><sub>`classify_flow_cytometry_events`</sub> | Which population would a model trained on the gated ones assign each event to, or where does the density put a 2-D gate? |
+| **Cluster flow cytometry events** <br><sub>`cluster_flow_cytometry_events`</sub> | Which clusters do the events of this population form, and how large is each? |
 | **Cluster flow cytometry FlowSOM** <br><sub>`cluster_flow_cytometry_flowsom`</sub> | Which cell populations does FlowSOM find in this file, and how large is each? |
 | **Compare antibodies** <br><sub>`compare_antibodies`</sub> | How do these antibodies' heavy (or light) variable domains differ position by position, and how do their lengths, pI, charge, hydropathy, extinction and CDR charge compare? |
+| **Correct flow cytometry batches cyCombine** <br><sub>`correct_flow_cytometry_batches_cycombine`</sub> | Where must each cell move so that the batches agree within every group of similar cells, without a control sample? |
 | **Enzyme cut counts** <br><sub>`enzyme_cut_counts`</sub> | How many times does each enzyme cut this molecule? |
+| **Estimate cytof spillover** <br><sub>`estimate_cytof_spillover`</sub> | How much does each metal channel of this mass cytometry panel spill into the others? |
 | **Estimate flow cytometry scale** <br><sub>`estimate_flow_cytometry_scale`</sub> | Which transform parameters does this data itself support? |
 | **Estimate spectra from controls** <br><sub>`estimate_spectra_from_controls`</sub> | What spectral signatures do these single-stain controls imply? |
 | **Estimate spillover from controls** <br><sub>`estimate_spillover_from_controls`</sub> | What spillover matrix do these compensation controls imply? |
 | **Filter items** <br><sub>`filter_items`</sub> | Which rows of this table meet the condition, and how many were dropped? |
+| **Find common substructure** <br><sub>`find_common_substructure`</sub> | What is the largest substructure all of these molecules share? |
 | **Find ORFs** <br><sub>`find_orfs`</sub> | Which open reading frames does this molecule carry, on both strands? |
 | **Find primer SNPs** <br><sub>`find_primer_snps`</sub> | Which known dbSNP variants sit under these primers, and how far is each from the 3' end? |
+| **Fit flow cytometry cell cycle** <br><sub>`fit_flow_cytometry_cell_cycle`</sub> | What share of these DNA-stained cells is in G1, S and G2/M? |
 | **Fit flow cytometry COMPASS** <br><sub>`fit_flow_cytometry_compass`</sub> | Which cytokine combinations respond to stimulation in each subject, and how polyfunctional is the response? |
-| **Fit flow cytometry proliferation** <br><sub>`fit_flow_cytometry_proliferation`</sub> | How many divisions have these dye-labelled cells gone through, and what share sits in each generation? |
+| **Fit flow cytometry proliferation** <br><sub>`fit_flow_cytometry_proliferation`</sub> | How many divisions have these dye-labeled cells gone through, and what share sits in each generation? |
+| **Fit flow cytometry trajectory** <br><sub>`fit_flow_cytometry_trajectory`</sub> | Which developmental paths run through these clusters, and how far along each path is every event? |
 | **Flow cytometry kinetics** <br><sub>`flow_cytometry_kinetics`</sub> | How does this channel change over the acquisition, and what are its peak, slope and area in each time range? |
 | **Fold RNA** <br><sub>`fold_rna`</sub> | What is the minimum-free-energy secondary structure of this sequence, and its free energy? |
 | **Fragment ions** <br><sub>`fragment_ions`</sub> | Which theoretical fragment ions does this peptide give, at each charge? |
 | **GC content** <br><sub>`gc_content`</sub> | What is this sequence's GC fraction, overall or along a sliding window? |
 | **Genotype PCA** <br><sub>`genotype_pca`</sub> | What population structure do these genotypes show in their principal components? |
+| **HMM build** <br><sub>`hmm_build`</sub> | What profile HMM does hmmbuild make of this alignment, and with what E-value statistics? |
+| **HMM search** <br><sub>`hmm_search`</sub> | How well does each sequence score against this profile HMM, where does the model match, and does it clear the family’s own gathering cutoff? |
+| **Hmmscan** <br><sub>`hmmscan`</sub> | Which of these profile HMMs does the protein carry, in which domains, with what E-values? |
+| **Impute flow cytometry infinity** <br><sub>`impute_flow_cytometry_infinity`</sub> | What would every Infinity marker of the screen read on each cell, from the backbone alone? |
 | **Isotope envelope** <br><sub>`isotope_envelope`</sub> | What coarse isotope pattern does this peptide or formula show: the heights and masses of M, M+1, M+2 and beyond? |
 | **Isotopic composition** <br><sub>`isotopic_composition`</sub> | Which isotopic composition is this peptide most likely to carry, and how abundant is it? |
 | **Linkage disequilibrium** <br><sub>`linkage_disequilibrium`</sub> | How much linkage disequilibrium is there between each pair of biallelic sites, and which sites survive pruning? |
@@ -577,7 +593,11 @@ _Everything else a bench scientist asks of a sequence._
 | **Mask sequence** <br><sub>`mask_sequence`</sub> | Which stretches of this sequence should a similarity search not seed on? |
 | **Match part by sequence** <br><sub>`match_part_by_sequence`</sub> | Which published iGEM part carries exactly these bases? |
 | **MIQE checklist** <br><sub>`miqe_checklist`</sub> | Which MIQE 2.0 items does a qPCR paper provide, and where, or why are they omitted? |
+| **Normalize cytof beads** <br><sub>`normalize_cytof_beads`</sub> | How much did the instrument's sensitivity drift over these acquisitions, and what are the counts with that drift taken out? |
+| **Normalize flow cytometry batch** <br><sub>`normalize_flow_cytometry_batch`</sub> | Do the same populations sit at the same place on each channel across these samples, and if not, by how much must each be moved? |
+| **Normalize flow cytometry CytoNorm** <br><sub>`normalize_flow_cytometry_cytonorm`</sub> | How must each batch be moved so that its control sample matches the others, and what does that do to the samples of that batch? |
 | **Rank reference genes** <br><sub>`rank_reference_genes`</sub> | Which candidate reference genes are most stable on this plate, by geNorm, NormFinder, BestKeeper, comparative delta-Ct and their consensus? |
+| **Read eds run** <br><sub>`read_eds_run`</sub> | What run, plate, dyes and amplification curves does this QuantStudio .eds hold? |
 | **Read MGF** <br><sub>`read_mgf`</sub> | What spectra does this MGF file hold? |
 | **Read mzML** <br><sub>`read_mzml`</sub> | What spectra, precursors and acquisition metadata does this mzML run hold? |
 | **Read structure** <br><sub>`read_structure`</sub> | What is in this structure file: chains, sequences, ligands, solvent, disulfides, modified residues, B-factors, cell, resolution and experiment? |
@@ -592,6 +612,7 @@ _Everything else a bench scientist asks of a sequence._
 | **Summarize rows** <br><sub>`summarize_rows`</sub> | What is this table column's summary: its largest, smallest, median, mean or spread, overall or per group? |
 | **Synthesize flow cytometry** <br><sub>`synthesize_flow_cytometry`</sub> | What does this file support, read before any question is asked? |
 | **Target decoy qvalues** <br><sub>`target_decoy_qvalues`</sub> | What q-value does each peptide-spectrum match get by target-decoy competition, and how many pass a threshold? |
+| **Test cytometry spatial interactions** <br><sub>`test_cytometry_spatial_interactions`</sub> | Which cell types sit next to each other more, or less, often than a random arrangement of the same cells? |
 | **Translate sequence** <br><sub>`translate_sequence`</sub> | What protein does this DNA encode, under the genetic code chosen? |
 
 </details>
@@ -638,7 +659,7 @@ find a wrong answer, [open an issue](https://github.com/genmnz/jean-by-melad-lab
 are treated as bugs.
 
 **Is there a visual interface?** Yes. The same engine runs in your browser at
-[jeanslabs.vercel.app](https://jeanslabs.vercel.app): a plasmid and sequence editor with cloning
+[jean.meladlabs.workers.dev](https://jean.meladlabs.workers.dev): a plasmid and sequence editor with cloning
 simulation, primer design, gel and Sanger views. Free, no account.
 
 ## About
